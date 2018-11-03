@@ -9,4 +9,4 @@ void ler_vetoriza_arquivo(arqv[])
         fopen(arq[tam],a);
     fscanf(arq[i],"%d",arq[tam]);
 }
-teste
+teste1
