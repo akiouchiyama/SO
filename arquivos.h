@@ -1,3 +1,2 @@
-#include <Arquivos.h>
-
-void ler_vetoriza_arquivo(arqv[]); 
+void ler_vetoriza_arquivo(arqv);  //cabeçalho da função
+ 
