@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
     
-    int k=0; //Contador para saber quantos inteiros tem o arquivo.
-    int j=1000; //Variavel para aumentar de 1000 em 1000 a memoria alocada.
-    int *num; //Memoria alocada dinamicamente.
+int k=0; //Contador para saber quantos inteiros tem o arquivo de saída.
+int j=1000; //Variavel para aumentar de 1000 em 1000 a memoria alocada.
+int *num; //Memoria alocada dinamicamente.
 /* -------------------------------------------------
 	     DECLARA TODAS AS FUNÇÕES ANTES DA MAIN
    ------------------------------------------------- */
@@ -86,9 +86,9 @@ void escrita(int arqc, char* arqv[]){
 
     FILE *arq; //Define arquivo que irá ser escrito.
     arq=fopen(arqv[arqc-1],"w");//Abre o arquivo a ser lido.
-    for(int i=1;i<=k;i++)
-      fprintf(arq,"%d ",num[i]);
-    fclose(arq);
+    for(int i=1;i<k;i++) //Escreve inteiro por inteiro no arquivo
+      fprintf(arq,"%d ",num[i]); 
+    fclose(arq);//fecha arquivo após escreve tudo
 }
 
 /* -------------------------------------------------
