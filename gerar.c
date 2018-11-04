@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void ler_vetoriza_arquivo(int arqc, char* arqv[])   
+void gerar_arquivo(int arqc, char* arqv[])   
 {        
     FILE *arq2; //Define arquivo que irá ser escrito        
     arq2=fopen(arqv[arqc-1],"w");//cria o arquivo a ser escrito
@@ -18,5 +18,6 @@ void ler_vetoriza_arquivo(int arqc, char* arqv[])
         }
         fclose(arq1);//fecha o arquivo de leitura.
     }
+    fclose(arq2);
 
 }
