@@ -82,13 +82,13 @@ void quick_sort(int *a, int ini, int fim) {  //QUICK_SORT PARA ORDENA O VETOR
     }
 }
 
-void escrita(int arqc,int *num,char* argv[]){
+void escrita(int arqc, char* arqv[]){
 
-
-    FILE *arq1; //Abre para escrita.
-    arq1=fopen("oi","w");
+    FILE *arq; //Define arquivo que irá ser escrito.
+    arq=fopen(arqv[arqc-1],"w");//Abre o arquivo a ser lido.
     for(int i=1;i<=k;i++)
-      fprintf(arq1,"%d ",num[i]);
+      fprintf(arq,"%d ",num[i]);
+    fclose(arq);
 }
 
 /* -------------------------------------------------
@@ -100,7 +100,7 @@ void escrita(int arqc,int *num,char* argv[]){
    gerar_arquivo(arqc, arqv); //Chama função geradora do arquivo de saida sem ordenação.
    vetoriza(arqc,arqv); //Função para ler o arquivo e salva os dados no vetor num
    quick_sort(num,0 , k); //Ordena o vetor
-   escrita(arqc,num,arqv);
+   escrita(arqc,arqv);
 
     
      //ESCREVER ALGORITMO DE ORDENAÇÃO ANTES DE LIBERA MEMORIA  
