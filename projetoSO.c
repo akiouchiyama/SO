@@ -1,7 +1,8 @@
+
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
-
+#include <pthread.h>
     
 int k=0; //Contador para saber quantos inteiros tem o arquivo de saída.
 int j=1000; //Variavel para aumentar de 1000 em 1000 a memoria alocada.
@@ -96,7 +97,10 @@ void escrita(int arqc, char* arqv[]){
    ------------------------------------------------- */
 
     int main(int arqc,char* arqv[])
-{       
+{  
+    int T = atoi (arqv[1]);//RECEBE NUMERO DE THREADS DO USUÁRIO
+
+
    gerar_arquivo(arqc, arqv); //Chama função geradora do arquivo de saida sem ordenação.
    vetoriza(arqc,arqv); //Função para ler o arquivo e salva os dados no vetor num
    quick_sort(num,0 , k); //Ordena o vetor
