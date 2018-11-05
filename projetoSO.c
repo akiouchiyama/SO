@@ -93,7 +93,7 @@ void escrita(int arqc, char* arqv[]){
 }
 
 /* -------------------------------------------------
-			    INICIO DA MAIN 
+			    INICIO DA FUNÇÃO MAIN 
    ------------------------------------------------- */
 
     int main(int arqc,char* arqv[])
