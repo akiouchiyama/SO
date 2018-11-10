@@ -29,7 +29,6 @@ int y=2; //Auxiliar para o vetor
         int auxf; //recebe FINAL vetor
     }thread_arg, *ptr_thread_arg; 
 
-
 void gerar_arquivo(int arqc, char* arqv[])    //FUNÇÃO GERA ARQUIVO .OUT
 {        
     FILE *arq2; //Define arquivo que irá ser escrito        
@@ -102,7 +101,7 @@ void escrita(int arqc, char* arqv[]){
 void thread(int T){ //EXECUTA TODAS AS THREADS NA ORDENACAO
 
 
-gettimeofday(&inicio, NULL); //INICIA A CONTAGEM DO TEMPO
+    gettimeofday(&inicio, NULL); //INICIA A CONTAGEM DO TEMPO
     pthread_t thread[T]; //CRIA Números de Threads pedidas pelo usuário
     thread_arg arguments[T]; 
     for(int j=0; j<T;j++){        
@@ -116,30 +115,28 @@ gettimeofday(&inicio, NULL); //INICIA A CONTAGEM DO TEMPO
     }
 
    
-gettimeofday(&fim, NULL); //ENCERA A CONTAGEM DO TEMPO
-printf("Tempo de execução: %ld ms\n\n", GET_MS(inicio, fim)); //MOSTRA O TEMPO EM MS.
+    gettimeofday(&fim, NULL); //ENCERA A CONTAGEM DO TEMPO
+    printf("Tempo de execução: %ld ms\n\n", GET_MS(inicio, fim)); //MOSTRA O TEMPO EM MS.
 }
+
 /* -------------------------------------------------
 			    INICIO DA FUNÇÃO MAIN 
    ------------------------------------------------- */
-    int main(int arqc,char* arqv[])
-{  
-      int T = atoi (arqv[1]);//Numero de threads inseridas pelo Usuario
+
+int main(int arqc,char* arqv[]){  
+    int T = atoi (arqv[1]);//Numero de threads inseridas pelo Usuario
     
      if(T!=2 && T!=4 && T!=8 && T!=16){ //Se o número de threads diferente de 2,4,6,8 - SAI DO PROGRAMA
         printf("Numero de Threads Invalido\n");
         exit(1); //SAI DO PROGRAMA
     }
 
-   gerar_arquivo(arqc, arqv); //Chama função geradora do arquivo de saida sem ordenação.
-   vetoriza(arqc,arqv); //Função para ler o arquivo e salva os dados no vetor num
-
-  
-   thread(T);  //Carrega numero de Threads inseridas e começa a ordenada.
-   escrita(arqc,arqv);
-   free(num);//libera memoria7
-
-
+    gerar_arquivo(arqc, arqv); //Chama função geradora do arquivo de saida sem ordenação.
+    vetoriza(arqc,arqv); //Função para ler o arquivo e salva os dados no vetor num
+    thread(T);  //Carrega numero de Threads inseridas e começa a ordenada.
+    escrita(arqc,arqv);
+    free(num);//libera memoria
+   
         return 0;
 
 
