@@ -1,29 +1,15 @@
-SUCESSO!
+Projeto “Multicat integer sort” 
 
-void quick(int targ->auxnum[], int esq, int dir){
 
-    ptr_thread_arg targ = (ptr_thread_arg)arg; //CARREGA A ESTRUTURA NA FUNÇÃO
 
-    esq=y;
-    dir=targ->auxf;
+Entradas: o número de threads, os arquivos com os dados de entrada e o arquivo de saída que conterá os
+resultados. Recomenda-se que todas essas informações de entrada sejam fornecidas na própria linha de
+comando, conforme o exemplo a seguir.
 
-    int pivo = esq, i,ch,j;         
-    for(i=esq+1;i<=dir;i++){        
-        j = i;                      
-        if(targ->auxnum[j] < targ->auxnum[pivo]){     
-            ch = targ->auxnum[j];               
-            while(j > pivo){           
-                targ->auxnum[j] = targ->auxnum[j-1];      
-                j--;                    
-            }
-            targ->auxnum[j] = ch;               
-            pivo++;                    
-        }
-    }
-    if(pivo-1 >= esq){              
-        quick(targ->auxnum,esq,pivo-1);      
-    }
-    if(pivo+1 <= dir){              
-        quick(targ->auxnum,pivo+1,dir);      
-    }
- }
+
+Saídas: um arquivo com os valores inteiros ordenados.
+
+Por exemplo, suponha que o programa multicat deva ser executado com 16 threads lendo os arquivos de
+números inteiros arq1.in, arq2.in, arq3.in, e produzindo o arquivo arqSaida.out com os dados
+ordenados. Assim, o comando para a execução do programa ficaria assim:
+./multicat 16 arq1.in arq2.in arq3.in arqSaida.out 
