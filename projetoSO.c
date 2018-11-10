@@ -2,7 +2,21 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <sys/time.h>
 #include <pthread.h>
+
+/* ------------------------------------------------------------------
+     DEFINIÇÕES PARA FUNÇÃO gettimeofday PARA VÊ TEMPO D EX DAS THREADS
+   ------------------------------------------------------------------ */
+
+//(fim*x+ms) - (inicio*x+ms) = tempo
+#define GET_MS(ini, fim)  ((fim.tv_sec * 1000000 + fim.tv_usec) \
+			- (ini.tv_sec * 1000000 + ini.tv_usec))
+            struct timeval inicio, fim;
+
+ /* ------------------------------------------------------------------
+	     DECLARA TODAS AS VARIAVEIS GLOBAIS USADAS 
+   ------------------------------------------------------------------ */           
     
 int k=2; //Contador para saber quantos inteiros tem o arquivo de saída.
 int j=1000; //Variavel para aumentar de 1000 em 1000 a memoria alocada.
@@ -79,19 +93,19 @@ void escrita(int arqc, char* arqv[]){
 
     FILE *arq; //Define arquivo que irá ser escrito.
     arq=fopen(arqv[arqc-1],"w");//Abre o arquivo a ser lido.
-    for(int i=2;i<k && num>-1;i++){ //Escreve inteiro por inteiro no arquivo
+    for(int i=2;i<k;i++){ //Escreve inteiro por inteiro no arquivo
+      
       fprintf(arq,"%d ",num[i]);
     } 
     fclose(arq);//fecha arquivo após escreve tudo
 }
 
-void thread(int T){ //Divide a quantidade de numeros de entrada pela qtd de threads
-   time_t segundos = time(NULL);
-   
-   
+void thread(int T){ //EXECUTA TODAS AS THREADS NA ORDENACAO
+
+
+gettimeofday(&inicio, NULL); //INICIA A CONTAGEM DO TEMPO
     pthread_t thread[T]; //CRIA Números de Threads pedidas pelo usuário
     thread_arg arguments[T]; 
-   
     for(int j=0; j<T;j++){        
         arguments[j].auxnum=num; //Recebe o vetor
         int a=j+1; //Variavel aux para aumentar o fim do vetor até o final da lista
@@ -102,9 +116,9 @@ void thread(int T){ //Divide a quantidade de numeros de entrada pela qtd de thre
         
     }
 
-    float tempo_decorrido = time(NULL) - segundos;
-
-    printf("%f",tempo_decorrido);
+   
+gettimeofday(&fim, NULL); //ENCERA A CONTAGEM DO TEMPO
+printf("Tempo de execução: %ld ms\n\n", GET_MS(inicio, fim)); //MOSTRA O TEMPO EM MS.
 }
 /* -------------------------------------------------
 			    INICIO DA FUNÇÃO MAIN 
@@ -114,7 +128,7 @@ void thread(int T){ //Divide a quantidade de numeros de entrada pela qtd de thre
       int T = atoi (arqv[1]);//Numero de threads inseridas pelo Usuario
     
      if(T!=2 && T!=4 && T!=8 && T!=16){ //Se o número de threads diferente de 2,4,6,8 - SAI DO PROGRAMA
-        printf("Numero de Threads Invalido");
+        printf("Numero de Threads Invalido\n");
         exit(1); //SAI DO PROGRAMA
     }
 

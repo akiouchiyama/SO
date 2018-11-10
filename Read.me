@@ -1,21 +1,29 @@
-Ok.
+SUCESSO!
 
-Falta implementar as threads.
+void quick(int targ->auxnum[], int esq, int dir){
 
-void insercao (int targ->auxnum, int targ->auxf){
+    ptr_thread_arg targ = (ptr_thread_arg)arg; //CARREGA A ESTRUTURA NA FUNÇÃO
 
+    esq=y;
+    dir=targ->auxf;
 
-
-
-
-int i, j, x;
-for (i=2; i<=targ->auxf; i++){
-    x = targ->auxnum[i];
-    j=i-1;
-    targ->auxnum[0] = x; 
-    while (x < targ->auxnum[j]){
-        targ->auxnum[j+1] = targ->auxnum[j];
-        j--;
+    int pivo = esq, i,ch,j;         
+    for(i=esq+1;i<=dir;i++){        
+        j = i;                      
+        if(targ->auxnum[j] < targ->auxnum[pivo]){     
+            ch = targ->auxnum[j];               
+            while(j > pivo){           
+                targ->auxnum[j] = targ->auxnum[j-1];      
+                j--;                    
+            }
+            targ->auxnum[j] = ch;               
+            pivo++;                    
+        }
     }
-    targ->auxnum[j+1] = x;
-}
+    if(pivo-1 >= esq){              
+        quick(targ->auxnum,esq,pivo-1);      
+    }
+    if(pivo+1 <= dir){              
+        quick(targ->auxnum,pivo+1,dir);      
+    }
+ }
