@@ -1,3 +1,21 @@
 Ok.
 
 Falta implementar as threads.
+
+void insercao (int targ->auxnum, int targ->auxf){
+
+
+
+
+
+int i, j, x;
+for (i=2; i<=targ->auxf; i++){
+    x = targ->auxnum[i];
+    j=i-1;
+    targ->auxnum[0] = x; 
+    while (x < targ->auxnum[j]){
+        targ->auxnum[j+1] = targ->auxnum[j];
+        j--;
+    }
+    targ->auxnum[j+1] = x;
+}
