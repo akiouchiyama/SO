@@ -18,13 +18,15 @@ utilização de algoritmos rápidos de ordenação como, por exemplo, o Quicksor
 A quantidade de arquivos é variável, podendo ser um único arquivo ou vários, a critério do usuário. Os arquivos
 originais devem ser preservados.
  
- <b></h2>Entradas e saídas de valores para o programa</b></h2>
-      Entradas: o número de threads, os arquivos com os dados de entrada e o arquivo de saída que conterá os
+ <b><h2>Entradas e saídas de valores para o programa</b></h2>
+ 
+<b>Entradas:</b> o número de threads, os arquivos com os dados de entrada e o arquivo de saída que conterá os
 resultados. Recomenda-se que todas essas informações de entrada sejam fornecidas na própria linha de
 comando, conforme o exemplo a seguir.<p>
-      Saídas: um arquivo com os valores inteiros ordenados.<p>
+<b>Saídas</b>: um arquivo com os valores inteiros ordenados.<p>
     Por exemplo, suponha que o programa multicat deva ser executado com 16 threads lendo os arquivos de
 números inteiros arq1.in, arq2.in, arq3.in, e produzindo o arquivo arqSaida.out com os dados
 ordenados. <p><b>Assim, o comando para a execução do programa ficaria assim:</b></p>
+
 ./multicat 16 arq1.in arq2.in arq3.in arqSaida.out  <p>
 
